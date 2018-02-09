@@ -1,0 +1,9 @@
+<h1>Medicine Tracker</h1>
+
+<h2><%= link_to 'New Diary', new_diary_path %></h2>
+
+<% @diaries.each do |diary| %>
+  <p>
+    <strong>Title</strong>: <%= link_to diary.title, diary %><br>
+  </p>
+<% end %>

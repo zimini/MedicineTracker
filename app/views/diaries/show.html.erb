@@ -1,0 +1,6 @@
+<h1>Medicine Tracker - show</h1>
+
+<h1><%= @diary.title %></h1>
+<p><%= @diary.description %></p>
+
+<%= link_to 'Edit', edit_diary_path(@diary) %> | <%= link_to 'Delete', @diary, method: :delete, data: {confirm: 'Are you sure'} %>
