@@ -9,7 +9,7 @@ RSpec.feature 'Can view diaries' do
   end
 
   scenario 'list all diaries' do
-    expect(page).to have_content "Medicine Tracker"
+    expect(page).to have_content "Diaries"
     expect(page).to have_content diary1.title
     expect(page).to have_content diary2.title
   end

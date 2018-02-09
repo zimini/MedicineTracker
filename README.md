@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# Make the attachments polymorphic:
+## prescription has an image
+## user can upload image of, for example, a skin rash due to side effects
