@@ -12,5 +12,17 @@
   </ul>
 </div>
 
-<!-- <h1><%#= @diary.title %></h1> -->
-<p><%= @diary.description %></p>
+<table id="attributes">
+   <tr>
+     <th>Description:</th>
+     <td><%= @diary.description %></td>
+   </tr>
+   <tr>
+     <th>Created by:</th>
+     <td><%= @diary.user.email %></td>
+   </tr>
+   <tr>
+     <th>Created:</th>
+     <td><%= time_ago_in_words(@diary.created_at) %> ago</td>
+   </tr>
+</table>

@@ -1,11 +1,14 @@
 require "rails_helper"
 
 RSpec.feature 'Can view diaries' do
-  let!(:diary1) { FactoryBot.create(:diary) }
-  let!(:diary2) { FactoryBot.create(:diary, title: 'Diary 2', description: 'Diary 2 description') }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:diary1) { FactoryBot.create(:diary, user: user) }
+  let!(:diary2) { FactoryBot.create(:diary, title: 'Diary 2', description: 'Diary 2 description', user: user) }
 
   before do
+    login_as(user)
     visit "/"
+    click_link 'Your Diaries'
   end
 
   scenario 'list all diaries' do

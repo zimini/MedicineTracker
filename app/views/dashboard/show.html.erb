@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+
+<% if user_signed_in? %>
+  <%= link_to 'Your Diaries', diaries_path %>
+  <%#= link_to 'Your Prescription', diaries_path %>
+<% end %>

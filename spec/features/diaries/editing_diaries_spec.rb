@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'Can update diary' do
-  let!(:diary) { FactoryBot.create(:diary) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:diary) { FactoryBot.create(:diary, user: user) }
 
   before do
+    login_as(user)
     visit '/'
+    click_link 'Your Diaries'
     click_link 'Diary 1'
     click_link 'Edit'
   end

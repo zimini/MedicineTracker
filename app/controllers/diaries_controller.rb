@@ -1,13 +1,15 @@
 class DiariesController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   def new
-    @diary = Diary.new
+    # @diary = Diary.new
+    @diary = current_user.diaries.build
   end
 
   def create
-    @diary = Diary.new(diary_params)
+    # @diary = Diary.new(diary_params)
+    @diary = current_user.diaries.build(diary_params)
     if @diary.save
       flash[:notice] = 'Diary successfully created'
       redirect_to @diary
@@ -40,7 +42,7 @@ class DiariesController < ApplicationController
   def destroy
     if @diary.destroy
       flash[:notice] = "Diary successfully deleted"
-      redirect_to root_path
+      redirect_to diaries_path
     else
       flash[:alert] = "Diary not deleted"
       # render :edit
