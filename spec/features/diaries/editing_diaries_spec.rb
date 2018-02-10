@@ -7,7 +7,7 @@ RSpec.feature 'Can update diary' do
   before do
     login_as(user)
     visit '/'
-    click_link 'Your Diaries'
+    click_link 'My Diaries'
     click_link 'Diary 1'
     click_link 'Edit'
   end

@@ -8,7 +8,7 @@ RSpec.feature 'Can view diaries' do
   before do
     login_as(user)
     visit "/"
-    click_link 'Your Diaries'
+    click_link 'My Diaries'
   end
 
   scenario 'list all diaries' do

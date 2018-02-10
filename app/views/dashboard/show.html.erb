@@ -3,6 +3,6 @@
 </div>
 
 <% if user_signed_in? %>
-  <%= link_to 'Your Diaries', diaries_path %>
-  <%#= link_to 'Your Prescription', diaries_path %>
+  <p><%= link_to 'My Diaries', diaries_path %></p>
+  <p><%= link_to 'My Prescriptions', prescriptions_path %></p>
 <% end %>

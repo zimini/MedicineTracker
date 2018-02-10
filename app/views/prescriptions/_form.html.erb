@@ -1,0 +1,6 @@
+<%= simple_form_for(prescription) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :clinic %>
+  <%= f.input :date, as: :date %>
+  <%= f.button :submit %>
+<% end %>

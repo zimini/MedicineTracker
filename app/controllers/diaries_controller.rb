@@ -23,6 +23,7 @@ class DiariesController < ApplicationController
   end
 
   def index
+    # FIXME - scope the query to the current_user
     @diaries = Diary.all
   end
 
