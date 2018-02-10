@@ -14,7 +14,7 @@ RSpec.describe 'Users can create presciptions' do
     fill_in 'Clinic', with: 'Swiss Cottage'
     # fill_in 'Date', with: '2018/01/01'
     click_button 'Create Prescription'
-    expect(page).to have_content 'Prescription successfully created'
+    expect(page).to have_content 'Prescription created successfully'
   end
 
   scenario 'with invalid params' do

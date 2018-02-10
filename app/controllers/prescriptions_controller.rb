@@ -1,5 +1,7 @@
 class PrescriptionsController < ApplicationController
-  before_action :set_prescription, only: [:show]
+  before_action :authenticate_user!
+  before_action :set_prescription, only: [:show, :edit, :update]
+
   def index
     @prescriptions = current_user.prescriptions
   end
@@ -11,7 +13,7 @@ class PrescriptionsController < ApplicationController
   def create
     @prescription = current_user.prescriptions.build(prescription_params)
     if @prescription.save
-      redirect_to @prescription, notice: 'Prescription successfully created'
+      redirect_to @prescription, notice: 'Prescription created successfully'
     else
       flash.now[:alert] = 'Prescription not created'
       render :new
@@ -19,7 +21,18 @@ class PrescriptionsController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
+
+  def update
+    if @prescription.update(prescription_params)
+      redirect_to @prescription, notice: 'Prescription updated successfully'
+    else
+      flash.now[:alert] = 'Prescription not updated'
+      render :new
+    end
   end
 
   private

@@ -13,6 +13,14 @@ RSpec.feature 'Can update diary' do
   end
 
   scenario 'with valid params' do
+    fill_in 'Title', with: 'Diary 2'
+    fill_in 'Description', with: 'Diary 2 description'
+    click_button 'Update Diary'
+    expect(page).to have_content 'Diary updated successfully'
+    expect(page).to have_content "Diary 2"
+  end
+
+  scenario 'with invalid params' do
     fill_in 'Title', with: ''
     fill_in 'Description', with: ''
     click_button 'Update Diary'

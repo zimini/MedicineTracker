@@ -13,7 +13,7 @@ RSpec.feature 'Can create diaries' do
     fill_in 'Title', with: 'Diary 1'
     fill_in 'Description', with: 'Diary 1 description'
     click_button 'Create Diary'
-    expect(page).to have_content 'Diary successfully created'
+    expect(page).to have_content 'Diary created successfully'
     expect(page).to have_content 'Diary 1'
     expect(page).to have_content 'Diary 1 description'
     expect(page).to have_content "Created by: #{user.email}"

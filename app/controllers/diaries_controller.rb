@@ -11,7 +11,7 @@ class DiariesController < ApplicationController
     # @diary = Diary.new(diary_params)
     @diary = current_user.diaries.build(diary_params)
     if @diary.save
-      flash[:notice] = 'Diary successfully created'
+      flash[:notice] = 'Diary created successfully'
       redirect_to @diary
     else
       flash.now[:alert] = 'Diary was not created'
@@ -32,7 +32,7 @@ class DiariesController < ApplicationController
 
   def update
     if @diary.update(diary_params)
-      flash[:notice] = 'Diary successfully updated'
+      flash[:notice] = 'Diary updated successfully'
       redirect_to @diary
     else
       flash.now[:alert] = 'Diary was not updated'
