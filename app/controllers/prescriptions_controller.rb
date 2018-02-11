@@ -21,6 +21,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def show
+    @drugs = @prescription.drugs
   end
 
   def edit
