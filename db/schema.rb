@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211160012) do
+ActiveRecord::Schema.define(version: 20180211215109) do
 
   create_table "diaries", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20180211160012) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "diaries_prescriptions", id: false, force: :cascade do |t|
+    t.integer "diary_id", null: false
+    t.integer "prescription_id", null: false
+    t.index ["diary_id", "prescription_id"], name: "index_diaries_prescriptions_on_diary_id_and_prescription_id"
+    t.index ["prescription_id", "diary_id"], name: "index_diaries_prescriptions_on_prescription_id_and_diary_id"
   end
 
   create_table "drugs", force: :cascade do |t|

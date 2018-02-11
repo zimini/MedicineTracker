@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Can create diaries' do
+
   let(:user) { FactoryBot.create(:user) }
+  let!(:prescription) { FactoryBot.create(:prescription, user: user) }
+
   before do
     login_as(user)
     visit '/'
@@ -9,22 +12,50 @@ RSpec.feature 'Can create diaries' do
     click_link 'New Diary'
   end
 
-  scenario 'with valid params' do
-    fill_in 'Title', with: 'Diary 1'
-    fill_in 'Description', with: 'Diary 1 description'
-    click_button 'Create Diary'
-    expect(page).to have_content 'Diary created successfully'
-    expect(page).to have_content 'Diary 1'
-    expect(page).to have_content 'Diary 1 description'
-    expect(page).to have_content "Created by: #{user.email}"
+  context 'without a prescription' do
+    scenario 'with valid params' do
+      fill_in 'Title', with: 'Diary 1'
+      fill_in 'Description', with: 'Diary 1 description'
+      click_button 'Create Diary'
+      expect(page).to have_content 'Diary created successfully'
+      expect(page).to have_content 'Diary 1'
+      expect(page).to have_content 'Diary 1 description'
+      expect(page).to have_content "Created by: #{user.email}"
+      expect(page).to_not have_content 'Diary: Diary 1'
+    end
+
+    scenario 'with invalid params' do
+      fill_in 'Title', with: ''
+      fill_in 'Description', with: ''
+      click_button 'Create Diary'
+      expect(page).to have_content 'Diary was not created'
+      expect(page).to_not have_content 'Diary 1'
+      expect(page).to have_content "Title can't be blank"
+    end
   end
 
-  scenario 'with invalid params' do
-    fill_in 'Title', with: ''
-    fill_in 'Description', with: ''
-    click_button 'Create Diary'
-    expect(page).to have_content 'Diary was not created'
-    expect(page).to_not have_content 'Diary 1'
-    expect(page).to have_content "Title can't be blank"
+  context 'with a prescription' do
+    scenario 'with valid params' do
+      fill_in 'Title', with: 'Diary 1'
+      fill_in 'Description', with: 'Diary 1 description'
+      select 'Swiss Cottage', from: 'diary_prescription_ids'
+      click_button 'Create Diary'
+      expect(page).to have_content 'Diary created successfully'
+      expect(page).to have_content 'Diary 1'
+      expect(page).to have_content 'Diary 1 description'
+      expect(page).to have_content "Created by: #{user.email}"
+      expect(page).to have_content 'Prescription: Swiss Cottage'
+    end
+
+    scenario 'with invalid params' do
+      fill_in 'Title', with: ''
+      fill_in 'Description', with: ''
+      # select 'Swiss Cottage', from: 'Prescription'
+      click_button 'Create Diary'
+      expect(page).to have_content 'Diary was not created'
+      expect(page).to_not have_content 'Diary 1'
+      expect(page).to have_content "Title can't be blank"
+    end
   end
+
 end
