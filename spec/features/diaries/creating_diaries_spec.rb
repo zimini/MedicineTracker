@@ -20,8 +20,10 @@ RSpec.feature 'Can create diaries' do
       expect(page).to have_content 'Diary created successfully'
       expect(page).to have_content 'Diary 1'
       expect(page).to have_content 'Diary 1 description'
-      expect(page).to have_content "Created by: #{user.email}"
-      expect(page).to_not have_content 'Diary: Diary 1'
+      within('#prescription-table') do
+        expect(page).to have_content user.email
+        expect(page).to have_content 'Swiss Cottage'
+      end
     end
 
     scenario 'with invalid params' do
@@ -43,14 +45,15 @@ RSpec.feature 'Can create diaries' do
       expect(page).to have_content 'Diary created successfully'
       expect(page).to have_content 'Diary 1'
       expect(page).to have_content 'Diary 1 description'
-      expect(page).to have_content "Created by: #{user.email}"
-      expect(page).to have_content 'Prescription: Swiss Cottage'
+      within('#prescription-table') do
+        expect(page).to have_content user.email
+        expect(page).to have_content 'Swiss Cottage'
+      end
     end
 
     scenario 'with invalid params' do
       fill_in 'Title', with: ''
       fill_in 'Description', with: ''
-      # select 'Swiss Cottage', from: 'Prescription'
       click_button 'Create Diary'
       expect(page).to have_content 'Diary was not created'
       expect(page).to_not have_content 'Diary 1'

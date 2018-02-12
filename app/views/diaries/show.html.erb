@@ -12,21 +12,21 @@
   </ul>
 </div>
 
-<table id="attributes">
+<table id="prescription-table" class="table">
+  <thead>
    <tr>
-     <th>Description:</th>
-     <td><%= @diary.description %></td>
-   </tr>
-   <tr>
-     <th>Prescription:</th>
-     <td><%= @prescription.try(:clinic) %></td>
-   </tr>
-   <tr>
-     <th>Created by:</th>
-     <td><%= @diary.user.email %></td>
-   </tr>
-   <tr>
-     <th>Created:</th>
-     <td><%= time_ago_in_words(@diary.created_at) %> ago</td>
-   </tr>
+      <th>Description:</th>
+      <th>Prescription:</th>
+      <th>Created by:</th>
+      <th>Created:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @diary.description %></td>
+      <td><%= @prescription.try(:clinic) %></td>
+      <td><%= @diary.user.email %></td>
+      <td><%= time_ago_in_words(@diary.created_at) %> ago</td>
+    </tr>
+  </tbody>
 </table>

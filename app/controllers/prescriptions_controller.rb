@@ -7,7 +7,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def new
-    @prescription = Prescription.new
+    @prescription = current_user.prescriptions.build
   end
 
   def create
