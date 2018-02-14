@@ -38,4 +38,6 @@ Things to be added to it:
 - Code improvements
     - Dead code needs to be removed, more error handlers around finding records needs to be added
     - Better use of scopes for querying
-    - Better user of 'includes' to stop n+1 queries    
+    - Better user of 'includes' to stop n+1 queries
+- More tests
+    - Feature, controller and unit
