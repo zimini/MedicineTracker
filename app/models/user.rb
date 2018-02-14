@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :diaries
   has_many :prescriptions
-
+  has_many :drugs
 end

@@ -1,14 +1,30 @@
-<div class="page-header">
-  <h1>Diaries</h1>
+<div class="row header">
+  <div class="col-md-9">
+    <h1>Diaries</h1>
+  </div>
+  <div class="col-md-3">
+    <h1><%= link_to "New Diary", new_diary_path, class: "btn btn-success" %></h1>
+  </div>
+</div>
 
-  <ul class="actions">
-    <li><%= link_to "New Diary", new_diary_path,
-      class: "btn btn-success" %></li>
-  </ul>
+<div class="row">
+  <div class="col-md-3">Title</div>
+  <div class="col-md-3">Description</div>
+  <div class="col-md-3">Prescription</div>
+  <div class="col-md-3">Actions</div>
 </div>
 
 <% @diaries.each do |diary| %>
-  <p>
-    <strong>Title</strong>: <%= link_to diary.title, diary %><br>
-  </p>
+  <div class="row">
+    <div class="col-md-3"><%= link_to diary.title, diary %></div>
+    <div class="col-md-3"><%= diary.description %></div>
+    <div class="col-md-3">
+      <% if diary.prescription %>
+        <%= link_to diary.prescription.clinic, diary.prescription %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "Edit", edit_diary_path(diary), class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>

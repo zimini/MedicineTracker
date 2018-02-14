@@ -1,0 +1,17 @@
+<div class="col-md-5">
+  <%= link_to diary_path(@diary, {date: @today.yesterday }) do %>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <span class="hidden-sm-down"> Previous Day</span>
+  <% end %>
+</div>
+<div class="col-md-2">
+  <span class="text-center"><%= @today.strftime("%B %-d, %Y") %></span>
+</div>
+<div class="col-md-5">
+  <%= link_to diary_path(@diary, {date: @today.tomorrow }) do %>
+    <span class="pull-right">
+      <span class="hidden-sm-down"> Next Day</span>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </span>
+  <% end %>
+</div>

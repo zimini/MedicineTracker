@@ -1,0 +1,2 @@
+$("div#prescription-<%= @drug.id %>").remove();
+$("#medication-available-table-body").append("<%= escape_javascript(render partial: 'available_drug', locals: {drug: @drug}) %>");

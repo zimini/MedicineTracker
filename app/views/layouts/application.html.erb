@@ -20,8 +20,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <!-- <div class="navbar"> -->
+                <ul class="nav navbar-nav">
+                  <li><%= link_to 'Diaries', diaries_path %></li>
+                  <li><%= link_to 'Prescriptions', prescriptions_path %></li>
+                  <li><%= link_to 'Medications', drugs_path %></li>
+                </ul>
+              <!-- </div> -->
+            <% end %>
+          </ul>
         </div>
-        <div class="collapse navbar-collapse" id="collapse">
+        <div class="collapse navbar-collapse pull-right" id="collapse">
           <ul class="nav navbar-nav">
             <!-- <li class="<%= "active" if current_page?("/") %>">
               <%#= link_to "Home", root_path %>

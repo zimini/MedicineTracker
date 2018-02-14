@@ -19,6 +19,5 @@ RSpec.feature 'Users can view' do
   scenario 'specific prescription details' do
     click_link 'Swiss Cottage'
     expect(page).to have_content prescription1.clinic
-    expect(page).to have_content user.email
   end
 end

@@ -7,7 +7,6 @@ RSpec.feature 'Users can edit prescriptions' do
     login_as(user)
     visit '/'
     click_link 'My Prescriptions'
-    click_link 'Swiss Cottage'
     click_link 'Edit'
   end
 
@@ -16,5 +15,12 @@ RSpec.feature 'Users can edit prescriptions' do
     click_button 'Update Prescription'
     expect(page).to have_content 'Prescription updated successfully'
     expect(page).to have_content 'West Hampstead'
+  end
+
+  scenario 'with invalid attributes' do
+    fill_in 'Clinic', with: ''
+    click_button 'Update Prescription'
+    expect(page).to have_content 'Prescription not updated'
+    expect(page).to have_content "Clinic can't be blank"
   end
 end

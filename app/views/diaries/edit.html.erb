@@ -1,5 +1,13 @@
 <div class="page-header">
   <h1>Edit Diary</h1>
+
+  <ul class="actions">
+    <li><%= link_to "Delete Diary",
+      diary_path(@diary),
+      method: :delete,
+      data: { confirm: "This will delete the diary and remove all entries. Are you sure?" },
+      class: "btn btn-danger" %></li>
+  </ul>
 </div>
 
 <%= render 'form', {diary: @diary} %>

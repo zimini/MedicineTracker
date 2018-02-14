@@ -3,6 +3,7 @@
   <%= f.input :description %>
   <%#= f.association :prescriptions, label_method: :clinic, value_method: :id, include_blank: false, multiple: false, prompt: "Choose a Prescription" %>
   <%= f.label :prescription_id %>
-  <%= f.collection_select(:prescription_ids, @prescriptions, :id, :clinic) %><br>
+  <%#= f.collection_select(:prescription_ids, @prescriptions, :id, :clinic) %>
+  <%= f.collection_select(:prescription, @prescriptions, :id, :clinic) %><br>
   <%= f.button :submit %>
 <% end %>

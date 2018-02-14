@@ -1,0 +1,25 @@
+<div class="row header">
+  <div class="col-md-9">
+    <h1>Medications</h1>
+  </div>
+  <div class="col-md-3">
+    <h1><%= link_to "New Medication", new_drug_path, class: "btn btn-success" %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">Name</div>
+  <div class="col-md-3">Brand</div>
+  <div class="col-md-3">Dose</div>
+  <div class="col-md-3">Actions</div>
+</div>
+
+<% @drugs.each do |drug| %>
+  <div class="row">
+    <!-- <div class="col-md-3"><%#= link_to drug.name, drug %></div> -->
+    <div class="col-md-3"><%= drug.name %></div>
+    <div class="col-md-3"><%= drug.brand %></div>
+    <div class="col-md-3"><%= drug.dose %></div>
+    <div class="col-md-3"><%= link_to "Edit", edit_drug_path(drug), class: "btn btn-primary" %></div>
+  </div>
+<% end %>

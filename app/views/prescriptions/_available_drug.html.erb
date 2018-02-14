@@ -1,0 +1,12 @@
+<div class="row row-striped" id="available-<%= drug.id %>">
+  <div class="col-md-3"><%= drug.brand %></div>
+  <div class="col-md-3"><%= drug.name %></div>
+  <div class="col-md-3"><%= drug.dose %></div>
+  <div class="col-md-3">
+    <%= link_to 'Add to prescription',
+        add_drug_prescription_path(@prescription, drug),
+        remote: true,
+        method: :post,
+        class: "btn btn-primary" %>
+  </div>
+</div>

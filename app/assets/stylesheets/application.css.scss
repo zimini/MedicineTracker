@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 .page-header {
@@ -26,4 +27,16 @@ ul.actions {
 
 body {
   padding-top: 70px;
+}
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #ffffff;
+}
+
+.result-labels label {
+  padding-left: 5px;
 }

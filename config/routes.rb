@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   get 'dashboard/show'
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :diaries
+  resources :diary_drugs
+  resources :drugs
   resources :prescriptions do
-    resources :drugs
+    member do
+      post 'add_drug/:drug_id', :action => 'add_drug', :as => 'add_drug'
+      delete 'remove_drug/:drug_id', :action => 'remove_drug', :as => 'remove_drug'
+    end
   end
+
+
   root 'dashboard#show'
 end

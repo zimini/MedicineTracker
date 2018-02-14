@@ -1,0 +1,30 @@
+<hr>
+  Date: <%= @today %>
+<hr>
+
+<table id="prescription-table" class="table">
+  <thead>
+   <tr>
+      <th>Brand</th>
+      <th>Name</th>
+      <th>Dose</th>
+      <th>Result</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <%= simple_form_for(drug_entry, remote: true) do |f| %>
+        <td><%= drug_entry.drug.brand %></td>
+        <td><%= drug_entry.drug.name %></td>
+        <td><%= drug_entry.drug.dose %></td>
+        <td><%= f.input :drug_id, label:false, as: :hidden %></td>
+        <td><%= f.input :entry_id, label:false, as: :hidden %></td>
+        <td><%= f.input :result, label:false %></td>
+        <td><%= f.input :comments, label:false %></td>
+        <td><%= f.button :submit %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

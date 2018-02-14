@@ -1,0 +1,23 @@
+<%= simple_form_for(diary_drug, wrapper: :inline_form, html: {class: 'form-inline'}, remote: true) do |f| %>
+  <%= f.input :diary_id, as: :hidden %>
+  <%= f.input :drug_id, as: :hidden %>
+  <%= f.input :date, as: :hidden %>
+  <div class="col-md-2"><%= diary_drug.drug.brand %></div>
+  <div class="col-md-2"><%= diary_drug.drug.name %></div>
+  <div class="col-md-1"><%= diary_drug.drug.dose %></div>
+  <!-- <div class="col-md-2"><%#= f.input :result %></div> -->
+  <div class="col-md-3 result-labels">
+    <%= f.collection_radio_buttons :result, DiaryDrug::RESULTS, :first, :last, item_wrapper_tag: :div %>
+  </div>
+  <div class="col-md-3"><%= f.input :comments, label:false %></div>
+
+  <!-- <div class="col-md-1"><%#= f.button :submit, 'Submit', class: "btn btn-success" %></div> -->
+  <!-- <button class="btn btn-sm btn-outline-btn-success"><%#= diary_drug.drug_name %></button> -->
+  <!-- <button class="btn btn-sm btn-btn-success"><%#= diary_drug.drug_name %></button> -->
+
+  <% if diary_drug.new_record? %>
+    <%= f.button :submit, 'Submit', class: "btn btn-success" %>
+  <% else %>
+    <%= f.button :submit, 'Update', class: "btn btn-success" %>
+  <% end %>
+<% end %>

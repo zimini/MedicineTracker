@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1>Edit Drug</h1>
+  <ul class="actions">
+    <li><%= link_to "Delete Medication",
+      drug_path(@drug),
+      method: :delete,
+      data: { confirm: "This will delete the medication and any diary entries associated with it. Are you sure?" },
+      class: "btn btn-danger" %></li>
+  </ul>
+</div>
+
+<%= render 'form', prescription: @prescription, drug: @drug %>

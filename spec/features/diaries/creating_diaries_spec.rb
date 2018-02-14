@@ -19,11 +19,9 @@ RSpec.feature 'Can create diaries' do
       click_button 'Create Diary'
       expect(page).to have_content 'Diary created successfully'
       expect(page).to have_content 'Diary 1'
-      expect(page).to have_content 'Diary 1 description'
-      within('#prescription-table') do
-        expect(page).to have_content user.email
-        expect(page).to have_content 'Swiss Cottage'
-      end
+      expect(page).to have_content 'Previous Day'
+      expect(page).to have_content Date.today.strftime("%B %-d, %Y")
+      expect(page).to have_content 'Next Day'
     end
 
     scenario 'with invalid params' do
@@ -40,15 +38,10 @@ RSpec.feature 'Can create diaries' do
     scenario 'with valid params' do
       fill_in 'Title', with: 'Diary 1'
       fill_in 'Description', with: 'Diary 1 description'
-      select 'Swiss Cottage', from: 'diary_prescription_ids'
+      select 'Swiss Cottage', from: 'diary_prescription'
       click_button 'Create Diary'
       expect(page).to have_content 'Diary created successfully'
       expect(page).to have_content 'Diary 1'
-      expect(page).to have_content 'Diary 1 description'
-      within('#prescription-table') do
-        expect(page).to have_content user.email
-        expect(page).to have_content 'Swiss Cottage'
-      end
     end
 
     scenario 'with invalid params' do
