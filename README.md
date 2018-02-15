@@ -1,4 +1,8 @@
-This Rails app is mainly for users who are on longer-term medication but there would also be a use-case for patients on shorter-term medication to measure their results. Doctors often ask these patients to keep a drug diary to track effectiveness, side-effects, etc. This apps aims to make it easier to record that information. It is a work in progress and will continue to evolve. With this in mind, I've added steps below for functionality I'd like to add over the next period of time.
+This Rails app is mainly for users who are on longer-term medication but there would also be a use-case for patients on shorter-term medication to measure their results. Doctors often ask these patients to keep a drug diary to track effectiveness, side-effects, etc. This apps aims to make it easier to record that information.
+
+The aim is for a simple user interface: list the medication details and the results from it. A simple 1-5 rating and optional comments if the user would like to provide more detail. The 1-5 rating will be replaced with a set of clickable images (something like the airport security review buttons) - to make it quick for the user to record results.
+
+It is a work in progress and will continue to evolve. With this in mind, I've added steps below for functionality I'd like to add over the next period of time.
 
 This app uses Rails 5 and Ruby 2.4
 
@@ -6,7 +10,7 @@ It uses RSpec and Capybara for feature tests.
 
 It uses Devise for user authentication.
 
-Ajax is used for navigating between different entries (days) of the diary. It is also used for adding/removing drugs to/from a prescription.
+Ajax is used submitting results for different entries (days) of the diary. It should also be used when using the 'prev/next' navigation items for diary entries. It is also used for adding/removing drugs to/from a prescription.
 
 It currently uses SQLite for DB but that will be upgraded to MySQL or Postgres at a later date.
 
@@ -25,6 +29,8 @@ Things to be added to it:
 - Attachments (will need to be polymorphic):
     - Allow user to upload image of prescription
     - Allow user to upload image of side-effects from drugs
+- Simplify workflow
+    - Its a bit convoluted at the moment creating diaries, prescriptions, medications, associating medications to a prescription and associating a prescription to a diary.
 - Optimise for mobile
     - As this is to try to make user's life a litter easier, then it should be usable on a mobile screen. Bootstrap will be used for this.
 - Authorization system
